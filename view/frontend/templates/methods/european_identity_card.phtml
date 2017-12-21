@@ -1,0 +1,68 @@
+<?php /** @var \ClawRock\AgeVerification\Block\Method $block */ ?>
+<?php $code = $block->getCode(); ?>
+<?php for ($i = 1; $i <= 3; $i++) : ?>
+    <div class="field required">
+        <label for="<?php echo /* @escapeNotVerified */ $code; ?>_line_<?php echo /* @noEscape */ $i; ?>" class="label">
+            <?php echo /* @escapeNotVerified */ __('Line %1', $i); ?>
+        </label>
+        <div class="control">
+            <input id="<?php echo /* @escapeNotVerified */ $code; ?>_line_<?php echo /* @noEscape */ $i; ?>"
+                   type="text"
+                   name="eu_id_lines[<?php echo /* @noEscape */ $i-1; ?>]"
+                   title="<?php echo /* @escapeNotVerified */ __('Line %1', $i); ?>"
+                   value="<?php echo $block->escapeHtmlAttr($block->getFormData()->getEuIdLines($i-1)) ?>"
+                   class="input-text"
+                   data-validate="{required:true}">
+        </div>
+    </div>
+<?php endfor; ?>
+<div class="field required">
+    <label for="<?php echo /* @escapeNotVerified */ $code; ?>_nationality_country_id" class="label">
+        <?php echo /* @escapeNotVerified */ __('Nationality country'); ?>
+    </label>
+    <div class="control">
+        <?php echo $block->getCountryHtmlSelect(
+                $block->getFormData()->getNationalityCountryId(),
+                'nationality_country_id',
+                $code . '_nationality_country_id',
+                'Nationality Country'
+        ); ?>
+    </div>
+</div>
+<div class="field required">
+    <label for="<?php echo /* @escapeNotVerified */ $code; ?>_issue_country_id" class="label">
+        <?php echo /* @escapeNotVerified */ __('Issue country'); ?>
+    </label>
+    <div class="control">
+        <?php echo $block->getCountryHtmlSelect(
+                $block->getFormData()->getIssueCountryId(),
+                'issue_country_id',
+                $code . '_issue_country_id',
+                'Issue Country'
+        ); ?>
+    </div>
+</div>
+<div class="field">
+    <label for="<?php echo /* @escapeNotVerified */ $code; ?>_expiry_date" class="label">
+        <?php echo /* @escapeNotVerified */ __('Expiry date'); ?>
+    </label>
+    <div class="control">
+        <input type="text"
+               name="expiry_date"
+               data-validate="{required:true,'validate-date-au':true}"
+               value="<?php echo $block->escapeHtmlAttr($block->getFormData()->getExpiryDate()) ?>"
+               id="<?php echo /* @escapeNotVerified */ $code; ?>_expiry_date"
+               title="<?php echo /* @escapeNotVerified */ __('Expiry date'); ?>"/>
+        <script>
+            require(['jquery', 'mage/calendar'], function($) {
+                $('#<?php echo /* @escapeNotVerified */ $code; ?>_expiry_date').calendar({
+                    showsTime: false,
+                    dateFormat: 'dd/MM/y',
+                    buttonImage: '<?php echo $this->getViewFileUrl('Magento_Theme::calendar.png'); ?>',
+                    buttonText: 'Select Date', changeMonth: true, changeYear: true, showOn: 'both'
+                })
+            });
+
+        </script>
+    </div>
+</div>

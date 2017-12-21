@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceBlock name="clawrock_av.methods">
+            <block class="ClawRock\AgeVerification\Block\Method" name="clawrock_av.methods.id3global_electoral"
+                   as="id3global_electoral" template="ClawRock_ID3Global::methods/electoral.phtml">
+                <arguments>
+                    <argument name="title" xsi:type="string">Electoral</argument>
+                    <argument name="code" xsi:type="string">electoral</argument>
+                </arguments>
+            </block>
+            <block class="ClawRock\AgeVerification\Block\Method"
+                   name="clawrock_av.methods.id3global_european_identity_card"
+                   as="id3global_european_identity_card"
+                   template="ClawRock_ID3Global::methods/european_identity_card.phtml">
+                <arguments>
+                    <argument name="title" xsi:type="string">European Identity Card</argument>
+                    <argument name="code" xsi:type="string">eu_id_card</argument>
+                </arguments>
+            </block>
+        </referenceBlock>
+    </body>
+</page>

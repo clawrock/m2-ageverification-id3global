@@ -1,0 +1,99 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <section id="clawrock_av_methods">
+            <group id="id3global" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1"
+                   showInStore="1">
+                <label>GBG ID3Global</label>
+                <field id="electoral" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1"
+                       showInStore="1">
+                    <label>Electoral</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="european_identity_card" translate="label" type="select" sortOrder="10" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>European Identity Card</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <!-- TODO: add methods -->
+            </group>
+        </section>
+        <section id="clawrock_id3global" translate="label" type="text" sortOrder="40" showInDefault="1"
+                 showInWebsite="1" showInStore="1">
+            <tab>clawrock_av</tab>
+            <label>GBG ID3Global</label>
+            <resource>ClawRock_ID3Global::config</resource>
+            <group id="general" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1"
+                   showInStore="1">
+                <label>General</label>
+                <field id="active" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1"
+                       showInStore="1">
+                    <label>Enabled</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="username" translate="label" type="text" sortOrder="50" showInDefault="1" showInWebsite="1"
+                       showInStore="1">
+                    <label>Username</label>
+                    <validate>required-entry</validate>
+                    <depends>
+                        <field id="clawrock_id3global/general/active">1</field>
+                    </depends>
+                </field>
+                <field id="password" translate="label" type="text" sortOrder="60" showInDefault="1" showInWebsite="1"
+                       showInStore="1">
+                    <label>Password</label>
+                    <validate>required-entry</validate>
+                    <depends>
+                        <field id="clawrock_id3global/general/active">1</field>
+                    </depends>
+                </field>
+                <field id="profile_id" translate="label" type="text" sortOrder="70" showInDefault="1" showInWebsite="1"
+                       showInStore="1">
+                    <label>Profile ID</label>
+                    <validate>required-entry</validate>
+                    <depends>
+                        <field id="clawrock_id3global/general/active">1</field>
+                    </depends>
+                </field>
+                <field id="profile_version" translate="label" type="text" sortOrder="80" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Profile Version</label>
+                    <validate>required-entry validate-digits validate-digits-range digits-range-1-</validate>
+                    <depends>
+                        <field id="clawrock_id3global/general/active">1</field>
+                    </depends>
+                </field>
+                <field id="customer_reference" translate="label comment" type="text" sortOrder="90" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Customer Reference</label>
+                    <comment>This field can be used to distinguish api calls in GBG panel. For instance you can set this value to contain store code and later filter reports by the same value to narrow down results.</comment>
+                    <depends>
+                        <field id="clawrock_id3global/general/active">1</field>
+                    </depends>
+                </field>
+            </group>
+            <group id="debug" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1"
+                   showInStore="1">
+                <label>Debug</label>
+                <field id="enabled" translate="label" type="select" sortOrder="20" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Enabled</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="file" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="1"
+                       showInStore="1">
+                    <label>Debug File</label>
+                    <validate>required-entry</validate>
+                    <depends>
+                        <field id="clawrock_id3global/debug/enabled">1</field>
+                    </depends>
+                </field>
+                <field id="pilot_enabled" translate="label" type="select" sortOrder="40" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Pilot Enabled</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

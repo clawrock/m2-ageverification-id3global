@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <clawrock_av>
+            <id3global_general>
+                <debug_enabled>0</debug_enabled>
+                <debug_file>gbg.log</debug_file>
+                <pilot_enabled>1</pilot_enabled>
+                <profile_version>1</profile_version>
+            </id3global_general>
+            <models>
+                <id3global>
+                    <electoral>ClawRock\ID3Global\Model\Electoral\Method</electoral>
+                    <european_identity_card>ClawRock\ID3Global\Model\EuropeanIdentityCard\Method</european_identity_card>
+                </id3global>
+                <!-- TODO: add models -->
+            </models>
+        </clawrock_av>
+    </default>
+</config>
